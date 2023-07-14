@@ -1,19 +1,40 @@
+import Output from "@/components/Output/Output";
 import PostEditor from "@/components/PostEditor/PostEditor";
+import { Layout } from "@/components/layout";
+import { Editor, JSONContent } from "@tiptap/react";
 import React, { useState } from "react";
-
+import axios from "axios";
 const CreatePostPage: React.FC = () => {
-  const [content, setContent] = useState("");
+  const [content, setContent] = useState<JSONContent>({});
 
-  const handleSave = (updatedContent: string) => {
+  const handleChange = (updatedContent: JSONContent) => {
     setContent(updatedContent);
+    console.log(content);
   };
 
-  const handlePublish = () => {
-    // Perform save or publish actions with the content
+  const handlePublish = async () => {
+    axios
+      .post("./api/post", { title: "testy", content: content })
+      .then((res) => {})
+      .catch((err) => console.log(err));
   };
 
   return (
-    <>
+    <Layout>
+      <div
+        style={{
+          background: "white",
+          width: "15%",
+          borderRadius: ".25rem",
+          display: "flex",
+          height: "2rem",
+          justifyContent: "center",
+          border: " 2px solid black",
+          alignItems: "center",
+        }}
+      >
+        Post Editor
+      </div>
       <div
         style={{
           border: " 2px solid black",
@@ -21,12 +42,14 @@ const CreatePostPage: React.FC = () => {
           padding: "1rem",
           maxWidth: "40vw",
           minHeight: "50vh",
+          background: "white",
+          margin: "1rem",
         }}
       >
-        <PostEditor />
+        <PostEditor onChange={handleChange} />
       </div>{" "}
       <button onClick={handlePublish}>Publish</button>
-    </>
+    </Layout>
   );
 };
 

@@ -2,10 +2,12 @@ import { connectToDatabase } from "@/utils/db";
 import { NextPage, GetServerSideProps } from "next";
 import Head from "next/head";
 import { Layout } from "@/components/layout";
+import Output from "@/components/Output/Output";
+import { JSONContent } from "@tiptap/react";
 interface Post {
   _id: string;
   title: string;
-  image: string;
+  content: JSONContent;
   date: string;
 }
 
@@ -19,10 +21,10 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
       <Head>
         <title>My Blog</title>
       </Head>
-      <div className="grid grid-cols-3 gap-4">
+      <div className="posts">
         {posts.map((post) => (
           <div key={post._id}>
-            <img src={post.image} alt={post.title} />
+            <Output json={post.content} />
             <h2>{post.title}</h2>
             <p>{post.date}</p>
           </div>

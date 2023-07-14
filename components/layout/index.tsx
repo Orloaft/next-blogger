@@ -10,7 +10,7 @@ export const Layout = ({ children }: { children: ReactNode }) => {
             <Link href="/">Home</Link>
           </li>
           <li>
-            <Link href="/posts">Posts</Link>
+            <Link href="/post">Post</Link>
           </li>
           <li>
             <Link href="/about">About</Link>
