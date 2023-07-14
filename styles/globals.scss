@@ -11,7 +11,6 @@ html {
 }
 html,
 body {
-  padding: 2rem 0 2rem 0;
   max-width: 100vw;
   overflow-x: hidden;
   display: flex;
@@ -19,9 +18,16 @@ body {
 }
 .container {
   background: transparent;
-  height: 100vh;
+  height: 100%;
+  display: flex;
+  justify-content: center;
 }
 nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
   list-style: none;
   background: #fff;
   border-radius: 0.25rem;
@@ -29,6 +35,9 @@ nav {
   padding: 0.25rem;
 }
 .content {
+  display: flex;
+  justify-content: center;
+  height: 100%;
 }
 a {
   color: inherit;
@@ -135,8 +144,10 @@ button:focus {
 //   left: 0%;
 // }
 .posts {
+  padding: 5rem 3rem 1rem 3rem;
   max-width: 75%;
   background: #fff;
+  height: 100%;
   div {
     border-radius: 0.5rem;
   }

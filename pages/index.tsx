@@ -4,6 +4,7 @@ import Head from "next/head";
 import { Layout } from "@/components/layout";
 import Output from "@/components/Output/Output";
 import { JSONContent } from "@tiptap/react";
+import { useRouter } from "next/router";
 interface Post {
   _id: string;
   title: string;
@@ -16,6 +17,7 @@ interface HomeProps {
 }
 
 const Home: NextPage<HomeProps> = ({ posts }) => {
+  const router = useRouter();
   return (
     <Layout>
       <Head>
@@ -23,8 +25,12 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
       </Head>
       <div className="posts">
         {posts.map((post) => (
-          <div key={post._id}>
-            <Output json={post.content} />
+          <div
+            key={post._id}
+            onClick={() => {
+              router.push(`/posts/` + post._id);
+            }}
+          >
             <h2>{post.title}</h2>
             <p>{post.date}</p>
           </div>
