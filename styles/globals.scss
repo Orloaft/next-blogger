@@ -11,15 +11,22 @@ html {
 }
 html,
 body {
+  height: 100%;
   max-width: 100vw;
   overflow-x: hidden;
   display: flex;
   justify-content: center;
 }
+.thumbnail {
+  border: 2px solid black;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
 .container {
   background: transparent;
-  height: 100%;
+  height: 100%vh;
   display: flex;
+  width: 80vw;
   justify-content: center;
 }
 nav {
@@ -38,6 +45,7 @@ nav {
   display: flex;
   justify-content: center;
   height: 100%;
+  width: 100%;
 }
 a {
   color: inherit;
@@ -145,7 +153,7 @@ button:focus {
 // }
 .posts {
   padding: 5rem 3rem 1rem 3rem;
-  max-width: 75%;
+  width: 100%;
   background: #fff;
   height: 100%;
   div {

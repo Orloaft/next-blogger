@@ -1,6 +1,6 @@
 import Output from "@/components/Output/Output";
 import PostEditor from "@/components/PostEditor/PostEditor";
-import { Layout } from "@/components/layout";
+import { Layout } from "@/components/Layout";
 import { Editor, JSONContent } from "@tiptap/react";
 import React, { useState } from "react";
 import axios from "axios";
