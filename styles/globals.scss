@@ -1,11 +1,17 @@
+@font-face {
+  font-family: "Monoton";
+  src: url("../public/fonts/Monoton-Regular.ttf") format("truetype");
+  /* Add other font properties if necessary */
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
 html {
-  background: url("../public/bwbg.svg");
-
+  background: #0c1a1a;
+  color: #6acfc7;
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -17,33 +23,75 @@ body {
   display: flex;
   justify-content: center;
 }
-.thumbnail {
+.editorContainer {
   border: 2px solid black;
   border-radius: 0.5rem;
+  padding: 1rem;
+  max-width: 40vw;
+  min-height: 50vh;
+  margin: 1rem;
+  @media (max-width: 768px) {
+    max-width: 100%;
+  }
+}
+.thumbnail {
+  display: flex;
   cursor: pointer;
+  &:hover {
+    background-color: #6acfc7;
+    color: #0c1a1a;
+  }
+}
+.link {
+  display: inline-block;
+  span:hover {
+    display: inline-block;
+    text-shadow:
+      0 0 7px #fff,
+      0 0 10px #fff,
+      0 0 21px #fff,
+      0 0 42px #0fa,
+      0 0 82px #0fa,
+      0 0 92px #0fa,
+      0 0 102px #0fa,
+      0 0 151px #0fa;
+  }
 }
 .container {
   background: transparent;
-  height: 100%vh;
+  height: 100%;
   display: flex;
   width: 80vw;
   justify-content: center;
+  padding-top: 10%;
 }
 nav {
+  background: #0c1a1a;
+  font-family: "Monoton";
+  font-size: 3rem;
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 9999;
   list-style: none;
-  background: #fff;
-  border-radius: 0.25rem;
-  border: 2px solid black;
   padding: 0.25rem;
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+}
+.frame {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 2px solid #6acfc7;
 }
 .content {
   display: flex;
   justify-content: center;
+  align-items: center;
   height: 100%;
   width: 100%;
 }
@@ -121,18 +169,22 @@ a {
 }
 button {
   border-style: none;
-  background-color: #fff;
-  color: #000;
+  background-color: #6acfc7;
+  color: #0c1a1a;
   border: 1px solid #000;
   padding: 8px 16px;
   border-radius: 4px;
   font-size: 14px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.23s;
+  @media (max-width: 768px) {
+    padding: 1px;
+  }
 }
 
 button:hover {
-  background-color: #333;
+  background-color: #0c1a1a;
+  color: #6acfc7;
 }
 
 button:focus {
@@ -152,16 +204,33 @@ button:focus {
 //   left: 0%;
 // }
 .posts {
-  padding: 5rem 3rem 1rem 3rem;
   width: 100%;
-  background: #fff;
   height: 100%;
-  div {
-    border-radius: 0.5rem;
-  }
+}
+.post {
+  padding: 10%;
 }
 footer {
   position: absolute;
   bottom: 0;
   margin: 0;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 1px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #888;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #6acfc7;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

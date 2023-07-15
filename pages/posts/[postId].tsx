@@ -22,7 +22,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const post = await collection.findOne({
     _id: new ObjectId(postId as string),
   });
-
+  console.log(post);
   return {
     props: {
       postContent: post?.content || null,

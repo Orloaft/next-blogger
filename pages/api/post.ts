@@ -5,9 +5,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  console.log("trying to post");
-
-  const { title, content } = req.body;
+  const { title, content, author } = req.body;
 
   // Connect to the MongoDB database
   const db = await connectToDatabase();
@@ -16,6 +14,8 @@ export default async function handler(
   // Create a new post document
   const newPost = {
     title,
+    author,
+    date: new Date(),
     content,
   };
 

@@ -5,17 +5,17 @@ export const Layout = ({ children }: { children: ReactNode }) => {
   return (
     <div className="container">
       <nav>
-        <ul>
-          <li>
-            <Link href="/">Home</Link>
-          </li>
-          <li>
-            <Link href="/post">Post</Link>
-          </li>
-          <li>
-            <Link href="/about">About</Link>
-          </li>
-        </ul>
+        <Link className="link" href="/">
+          <span>Home</span>
+        </Link>
+
+        <Link className="link" href="/post">
+          <span> Post</span>
+        </Link>
+
+        <Link className="link" href="/about">
+          <span> About</span>
+        </Link>
       </nav>
       <div className="content">{children}</div>
       <footer>

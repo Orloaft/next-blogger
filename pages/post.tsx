@@ -4,51 +4,41 @@ import { Layout } from "@/components/Layout";
 import { Editor, JSONContent } from "@tiptap/react";
 import React, { useState } from "react";
 import axios from "axios";
+import { useSession } from "next-auth/react";
 const CreatePostPage: React.FC = () => {
   const [content, setContent] = useState<JSONContent>({});
-
+  const [title, setTitle] = useState("");
+  const session = useSession();
   const handleChange = (updatedContent: JSONContent) => {
     setContent(updatedContent);
-    console.log(content);
   };
-
+  const user = session.data?.user;
   const handlePublish = async () => {
     axios
-      .post("./api/post", { title: "testy", content: content })
+      .post("./api/post", {
+        title: title,
+        author: user && user.name,
+        content: content,
+      })
       .then((res) => {})
       .catch((err) => console.log(err));
   };
 
   return (
     <Layout>
-      <div
-        style={{
-          background: "white",
-          width: "15%",
-          borderRadius: ".25rem",
-          display: "flex",
-          height: "2rem",
-          justifyContent: "center",
-          border: " 2px solid black",
-          alignItems: "center",
-        }}
-      >
-        Post Editor
+      <div style={{ display: "flex", flexDirection: "column" }}>
+        <div className="thumbnail">Post Editor</div>
+        <div className="editorContainer">
+          <input
+            onChange={(e) => setTitle(e.target.value)}
+            name="title"
+            type="text"
+            placeholder="title"
+          ></input>
+          <PostEditor onChange={handleChange} />
+        </div>{" "}
+        <button onClick={handlePublish}>Publish</button>
       </div>
-      <div
-        style={{
-          border: " 2px solid black",
-          borderRadius: ".5rem",
-          padding: "1rem",
-          maxWidth: "40vw",
-          minHeight: "50vh",
-          background: "white",
-          margin: "1rem",
-        }}
-      >
-        <PostEditor onChange={handleChange} />
-      </div>{" "}
-      <button onClick={handlePublish}>Publish</button>
     </Layout>
   );
 };

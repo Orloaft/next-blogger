@@ -1,13 +1,12 @@
 import NextAuth from "next-auth";
-
 import GoogleProvider from "next-auth/providers/google";
 import EmailProvider from "next-auth/providers/email";
 
 export default NextAuth({
   providers: [
     GoogleProvider({
-      clientId: process.env.GOOGLE_ID as string,
-      clientSecret: process.env.GOOGLE_SECRET as string,
+      clientId: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID as string,
+      clientSecret: process.env.NEXT_PUBLIC_GOOGLE_SECRET as string,
     }),
     // Passwordless / email sign in
     // EmailProvider({
@@ -15,4 +14,5 @@ export default NextAuth({
     //   from: "NextAuth.js <orlovboros@gmail.com>",
     // }),
   ],
+  secret: process.env.NEXT_PUBLIC_NEXTAUTH_SECRET,
 });
