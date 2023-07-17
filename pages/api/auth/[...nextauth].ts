@@ -1,6 +1,5 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
-import EmailProvider from "next-auth/providers/email";
 
 export default NextAuth({
   providers: [
@@ -14,5 +13,6 @@ export default NextAuth({
     //   from: "NextAuth.js <orlovboros@gmail.com>",
     // }),
   ],
+
   secret: process.env.NEXT_PUBLIC_NEXTAUTH_SECRET,
 });

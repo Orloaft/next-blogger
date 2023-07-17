@@ -36,6 +36,7 @@ body {
 }
 .thumbnail {
   display: flex;
+  transition: all 0.3s ease-in-out;
   cursor: pointer;
   &:hover {
     background-color: #6acfc7;
@@ -44,17 +45,22 @@ body {
 }
 .link {
   display: inline-block;
-  span:hover {
-    display: inline-block;
-    text-shadow:
-      0 0 7px #fff,
-      0 0 10px #fff,
-      0 0 21px #fff,
-      0 0 42px #0fa,
-      0 0 82px #0fa,
-      0 0 92px #0fa,
-      0 0 102px #0fa,
-      0 0 151px #0fa;
+
+  span {
+    transition: text-shadow 0.3s ease-in-out;
+    &:hover {
+      display: inline-block;
+      opacity: 0.7;
+      text-shadow:
+        0 0 7px #fff,
+        0 0 10px #fff,
+        0 0 21px #fff,
+        0 0 42px #0fa,
+        0 0 82px #0fa,
+        0 0 92px #0fa,
+        0 0 102px #0fa,
+        0 0 151px #0fa;
+    }
   }
 }
 .container {

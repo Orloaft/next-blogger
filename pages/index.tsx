@@ -3,7 +3,7 @@ import Head from "next/head";
 import { Layout } from "@/components/Layout";
 import { JSONContent } from "@tiptap/react";
 
-import SignIn from "@/components/Auth/SignIn";
+import SignIn from "@/components/Auth/AccountInfo";
 import { useSession } from "next-auth/react";
 import { connectToDatabase } from "@/utils/db";
 import { PostFeed } from "@/components/Feed/PostFeed";

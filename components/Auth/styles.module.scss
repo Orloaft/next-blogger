@@ -1,0 +1,35 @@
+.accountBar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #333;
+    color: #fff;
+    padding: 8px;
+}
+
+.profileImage {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.username {
+    margin-right: 8px;
+}
+
+.signOutButton,
+.signInButton {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.notSignedIn {
+    margin-right: 8px;
+}
