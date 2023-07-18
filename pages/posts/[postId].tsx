@@ -1,7 +1,6 @@
 import Output from "@/components/Output/Output";
-import { Layout } from "@/components/Layout";
+import Layout from "@/components/Layout";
 import { connectToDatabase } from "@/utils/db";
-import { JSONContent } from "@tiptap/react";
 import { ObjectId } from "mongodb";
 import { GetServerSideProps } from "next";
 import CommentSection from "@/components/Comment/Comment";
