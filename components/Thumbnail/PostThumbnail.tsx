@@ -1,11 +1,13 @@
 import { getHumanReadableDate } from "@/utils/date";
+import { JSONContent } from "@tiptap/react";
 import { useRouter } from "next/router";
 
-interface Post {
+export interface Post {
   title: string;
-  date: string;
+  date: string | Date;
   author: string;
   imageUrl: string;
+  content: JSONContent;
   _id: any;
 }
 export const PostThumbnail: React.FC<Post> = ({

@@ -22,7 +22,9 @@ const CreatePostPage: React.FC = () => {
         content: content,
         imageUrl: url,
       })
-      .then((res) => {})
+      .then((res) => {
+        setContent({});
+      })
       .catch((err) => console.log(err));
   };
 
