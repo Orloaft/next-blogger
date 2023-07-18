@@ -1,6 +1,6 @@
 import { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
-import { Layout } from "@/components/Layout";
+import { Layout } from "../components/Layout";
 import { JSONContent } from "@tiptap/react";
 
 import SignIn from "@/components/Auth/AccountInfo";
