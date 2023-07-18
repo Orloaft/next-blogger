@@ -5,7 +5,7 @@ import SignIn from "@/components/Auth/AccountInfo";
 import { useSession } from "next-auth/react";
 import { connectToDatabase } from "@/utils/db";
 import { PostFeed } from "@/components/Feed/PostFeed";
-import Layout from "@/components/Layout";
+import Layout from "@/components/layout";
 
 interface Post {
   _id: string;
