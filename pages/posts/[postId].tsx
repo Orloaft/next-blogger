@@ -4,7 +4,7 @@ import { ObjectId } from "mongodb";
 import { GetServerSideProps } from "next";
 import CommentSection from "@/components/Comment/Comment";
 import { getHumanReadableDate } from "@/utils/date";
-import Layout from "@/components/Layout";
+import Layout from "@/components/layout";
 
 export default function PostView({ post }: any) {
   return (
