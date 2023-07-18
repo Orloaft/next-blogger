@@ -45,4 +45,4 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
 //   };
 // };
 
-// export default Home;
+export default Home;
