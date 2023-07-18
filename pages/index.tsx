@@ -27,9 +27,7 @@ const Home: NextPage<HomeProps> = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_CLIENT}/api/posts`
-        );
+        const response = await axios.get(`/api/posts`);
         setPosts(response.data.posts);
       } catch (error) {
         console.error(error);
