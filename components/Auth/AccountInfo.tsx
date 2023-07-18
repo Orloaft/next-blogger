@@ -9,7 +9,9 @@ export default function AccountInfo() {
 
     return (
       <div className={styles.accountBar}>
-        <img src={image || ""} alt="Profile" className={styles.profileImage} />
+        {image && (
+          <img src={image} alt="Profile" className={styles.profileImage} />
+        )}
 
         <span className={styles.username}>{name}</span>
         <button className={styles.signOutButton} onClick={() => signOut()}>

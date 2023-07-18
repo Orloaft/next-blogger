@@ -18,9 +18,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
         </Link>
       </nav>
       <div className="content">{children}</div>
-      <footer>
-        <p>&copy; 2022 My Awesome Blog</p>
-      </footer>
+      <footer></footer>
     </div>
   );
 };

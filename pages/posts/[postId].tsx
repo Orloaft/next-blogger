@@ -4,10 +4,11 @@ import { ObjectId } from "mongodb";
 import { GetServerSideProps } from "next";
 import CommentSection from "@/components/Comment/Comment";
 import { getHumanReadableDate } from "@/utils/date";
+import Layout from "@/components/Layout";
 
 export default function PostView({ post }: any) {
   return (
-    <div>
+    <Layout>
       {post && (
         <div className="post">
           <div className="intro">
@@ -21,11 +22,11 @@ export default function PostView({ post }: any) {
               </div>
             </div>
           </div>
-          <Output json={post.content} />
+          {post.content && <Output json={post.content} />}
           <CommentSection />
         </div>
       )}
-    </div>
+    </Layout>
   );
 }
 
@@ -36,7 +37,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const post = await collection.findOne({
     _id: new ObjectId(postId as string),
   });
-  console.log(post);
+
   return {
     props: {
       post: {

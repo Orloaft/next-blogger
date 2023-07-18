@@ -5,6 +5,7 @@ import SignIn from "@/components/Auth/AccountInfo";
 import { useSession } from "next-auth/react";
 import { connectToDatabase } from "@/utils/db";
 import { PostFeed } from "@/components/Feed/PostFeed";
+import Layout from "@/components/Layout";
 
 interface Post {
   _id: string;
@@ -20,7 +21,7 @@ interface HomeProps {
 const Home: NextPage<HomeProps> = ({ posts }) => {
   const { data: session } = useSession();
   return (
-    <div>
+    <Layout>
       <Head>
         <title>My Blog</title>
       </Head>
@@ -29,7 +30,7 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
         <SignIn />
       </div>
       {session?.user && posts && <PostFeed posts={posts} />}
-    </div>
+    </Layout>
   );
 };
 export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
