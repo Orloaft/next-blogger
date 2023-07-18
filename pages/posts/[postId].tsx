@@ -1,5 +1,4 @@
 import Output from "@/components/Output/Output";
-
 import { connectToDatabase } from "@/utils/db";
 import { ObjectId } from "mongodb";
 import { GetServerSideProps } from "next";
