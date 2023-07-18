@@ -4,6 +4,6 @@ export default async function handler(req: any, res: any) {
   const db = await connectToDatabase();
   const collection = db.collection("Posts");
   const posts = await collection.find().toArray();
-
+  console.log(posts);
   res.status(200).json({ posts });
 }
