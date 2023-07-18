@@ -10,6 +10,7 @@ import { JSONContent } from "@tiptap/react";
 import React, { useMemo } from "react";
 import { CodeMark } from "../PostEditor/PostEditor";
 import OrderedList from "@tiptap/extension-ordered-list";
+import BulletList from "@tiptap/extension-bullet-list";
 export default function Output({ json }: { json: JSONContent }) {
   const output = useMemo(() => {
     return generateHTML(json, [
@@ -20,6 +21,7 @@ export default function Output({ json }: { json: JSONContent }) {
       CodeMark,
       ListItem,
       OrderedList,
+      BulletList,
     ]);
   }, [json]);
 

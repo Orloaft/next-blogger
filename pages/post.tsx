@@ -8,6 +8,7 @@ import { useSession } from "next-auth/react";
 const CreatePostPage: React.FC = () => {
   const [content, setContent] = useState<JSONContent>({});
   const [title, setTitle] = useState("");
+  const [url, setUrl] = useState("");
   const session = useSession();
   const handleChange = (updatedContent: JSONContent) => {
     setContent(updatedContent);
@@ -19,6 +20,7 @@ const CreatePostPage: React.FC = () => {
         title: title,
         author: user && user.name,
         content: content,
+        imageUrl: url,
       })
       .then((res) => {})
       .catch((err) => console.log(err));
@@ -34,6 +36,12 @@ const CreatePostPage: React.FC = () => {
             name="title"
             type="text"
             placeholder="title"
+          ></input>{" "}
+          <input
+            onChange={(e) => setUrl(e.target.value)}
+            name="imageUrl"
+            type="text"
+            placeholder="thumbnail Image"
           ></input>
           <PostEditor onChange={handleChange} />
         </div>{" "}
