@@ -5,6 +5,7 @@ import { Editor, JSONContent } from "@tiptap/react";
 import React, { useState } from "react";
 import axios from "axios";
 import { useSession } from "next-auth/react";
+import Layout from "@/components/layout";
 const CreatePostPage: React.FC = () => {
   const [content, setContent] = useState<JSONContent>({});
   const [title, setTitle] = useState("");
@@ -29,7 +30,7 @@ const CreatePostPage: React.FC = () => {
   };
 
   return (
-    <div>
+    <Layout>
       <div style={{ display: "flex", flexDirection: "column" }}>
         <div className="thumbnail">Post Editor</div>
         <div className="editorContainer">
@@ -49,7 +50,7 @@ const CreatePostPage: React.FC = () => {
         </div>{" "}
         <button onClick={handlePublish}>Publish</button>
       </div>
-    </div>
+    </Layout>
   );
 };
 
