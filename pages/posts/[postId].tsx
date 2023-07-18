@@ -1,5 +1,5 @@
 import Output from "@/components/Output/Output";
-import Layout from "@/components/Layout";
+
 import { connectToDatabase } from "@/utils/db";
 import { ObjectId } from "mongodb";
 import { GetServerSideProps } from "next";
@@ -8,7 +8,7 @@ import { getHumanReadableDate } from "@/utils/date";
 
 export default function PostView({ post }: any) {
   return (
-    <Layout>
+    <div>
       {post && (
         <div className="post">
           <div className="intro">
@@ -26,7 +26,7 @@ export default function PostView({ post }: any) {
           <CommentSection />
         </div>
       )}
-    </Layout>
+    </div>
   );
 }
 

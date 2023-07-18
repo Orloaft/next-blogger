@@ -1,6 +1,6 @@
 import Output from "@/components/Output/Output";
 import PostEditor from "@/components/PostEditor/PostEditor";
-import Layout from "@/components/Layout";
+
 import { Editor, JSONContent } from "@tiptap/react";
 import React, { useState } from "react";
 import axios from "axios";
@@ -29,7 +29,7 @@ const CreatePostPage: React.FC = () => {
   };
 
   return (
-    <Layout>
+    <div>
       <div style={{ display: "flex", flexDirection: "column" }}>
         <div className="thumbnail">Post Editor</div>
         <div className="editorContainer">
@@ -49,7 +49,7 @@ const CreatePostPage: React.FC = () => {
         </div>{" "}
         <button onClick={handlePublish}>Publish</button>
       </div>
-    </Layout>
+    </div>
   );
 };
 
