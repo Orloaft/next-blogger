@@ -25,5 +25,5 @@ export default function Output({ json }: { json: JSONContent }) {
     ]);
   }, [json]);
 
-  return <div className="post" dangerouslySetInnerHTML={{ __html: output }} />;
+  return <div dangerouslySetInnerHTML={{ __html: output }} />;
 }
