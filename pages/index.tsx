@@ -33,16 +33,16 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
     </Layout>
   );
 };
-export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
-  const db = await connectToDatabase();
-  const collection = db.collection("Posts");
-  const posts = await collection.find().toArray();
+// export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
+//   const db = await connectToDatabase();
+//   const collection = db.collection("Posts");
+//   const posts = await collection.find().toArray();
 
-  return {
-    props: {
-      posts: JSON.parse(JSON.stringify(posts)),
-    },
-  };
-};
+//   return {
+//     props: {
+//       posts: JSON.parse(JSON.stringify(posts)),
+//     },
+//   };
+// };
 
-export default Home;
+// export default Home;
