@@ -3,6 +3,7 @@ import styles from "./styles.module.scss";
 import { useSession } from "next-auth/react";
 import axios from "axios";
 import { getHumanReadableDate } from "@/utils/date";
+import { useRouter } from "next/router";
 
 interface Comment {
   user: any;
@@ -67,6 +68,7 @@ const CommentSection: React.FC<{ comments: any; postId: any }> = ({
   postId,
 }: any) => {
   const session = useSession();
+  const router = useRouter();
   const handleCommentSubmit = (text: string) => {
     const newComment: Comment = {
       user: session.data && session.data.user,
@@ -78,7 +80,9 @@ const CommentSection: React.FC<{ comments: any; postId: any }> = ({
         postId: postId,
       })
       .then((res) => {
-        console.log(res);
+        setTimeout(() => {
+          router.push(`/posts/` + postId);
+        }, 1000);
       })
       .catch((err) => console.log(err));
   };

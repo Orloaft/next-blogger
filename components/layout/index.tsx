@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ReactNode } from "react";
+import AccountInfo from "../Auth/AccountInfo";
 
 const Layout = ({ children }: { children: ReactNode }) => {
   return (
@@ -8,17 +9,15 @@ const Layout = ({ children }: { children: ReactNode }) => {
         <Link className="link" href="/">
           <span>Home</span>
         </Link>
-
+        <Link className="link" href="/about">
+          <span> Byte-Stream</span>
+        </Link>
         <Link className="link" href="/post">
           <span> Post</span>
         </Link>
-
-        <Link className="link" href="/about">
-          <span> About</span>
-        </Link>
       </nav>
       <div className="content">{children}</div>
-      <footer></footer>
+      <AccountInfo />
     </div>
   );
 };

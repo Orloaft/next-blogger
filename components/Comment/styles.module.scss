@@ -1,11 +1,21 @@
 .commentList {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-gap: 1rem;
+    display: flex;
+    flex-direction: column;
     margin-top: 1rem;
     width: 100%;
 }
-
+.commentInput {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    input {
+        border-style: none;
+        background: grey;
+        padding: 1%;
+        border-radius: 0.25rem;
+        height: 2rem;
+    }
+}
 .comment {
     display: flex;
     align-items: center;

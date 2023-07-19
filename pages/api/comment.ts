@@ -22,7 +22,7 @@ export default async function handler(
 
     // Add the comment to the post's comments array
     post.comments.push({ ...comment, date: new Date().toDateString() });
-    console.log(post.comments);
+
     // Update the post document with the new comment
     let respo = await collection.updateOne(
       { _id: new ObjectId(postId) },
