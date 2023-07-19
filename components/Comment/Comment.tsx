@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import styles from "./styles.module.scss";
+import { useSession } from "next-auth/react";
+import axios from "axios";
+import { getHumanReadableDate } from "@/utils/date";
 
 interface Comment {
-  user: {
-    name: string;
-    image: string;
-  };
+  user: any;
   text: string;
+  date?: any;
 }
 
 interface CommentListProps {
@@ -16,15 +17,17 @@ interface CommentListProps {
 const CommentList: React.FC<CommentListProps> = ({ comments }) => {
   return (
     <div className={styles.commentList}>
-      {comments.map((comment, index) => (
-        <div className={styles.comment} key={index}>
-          <img src={comment.user.image} alt="Avatar" />
-          <div className={styles.commentContent}>
-            <h4>{comment.user.name}</h4>
-            <p>{comment.text}</p>
+      {comments &&
+        comments.map((comment, index) => (
+          <div className={styles.comment} key={index}>
+            <img src={comment.user.image} alt="Avatar" />
+            <div className={styles.commentContent}>
+              <h4>{comment.user.name}</h4>
+              <p>{comment.text}</p>
+              <span style={{ fontSize: ".9rem" }}>{comment.date}</span>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
     </div>
   );
 };
@@ -59,19 +62,25 @@ const CommentInput: React.FC<CommentInputProps> = ({ onSubmit }) => {
   );
 };
 
-const CommentSection: React.FC = () => {
-  const [comments, setComments] = useState<Comment[]>([]);
-
+const CommentSection: React.FC<{ comments: any; postId: any }> = ({
+  comments,
+  postId,
+}: any) => {
+  const session = useSession();
   const handleCommentSubmit = (text: string) => {
     const newComment: Comment = {
-      user: {
-        name: "John Doe",
-        image: "https://example.com/avatar.jpg",
-      },
+      user: session.data && session.data.user,
       text: text,
     };
-
-    setComments((prevComments) => [...prevComments, newComment]);
+    axios
+      .post(`${process.env.NEXT_PUBLIC_CLIENT}/api/comment`, {
+        comment: newComment,
+        postId: postId,
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
   };
 
   return (

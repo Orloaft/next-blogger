@@ -6,7 +6,7 @@ import { useSession } from "next-auth/react";
 import { connectToDatabase } from "@/utils/db";
 import { PostFeed } from "@/components/Feed/PostFeed";
 import Layout from "@/components/layout";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import axios from "axios";
 import Loading from "@/components/Loading/Loading";
 
@@ -42,7 +42,9 @@ const Home: NextPage<HomeProps> = () => {
         {" "}
         <SignIn />
       </div>
-      {(posts && <PostFeed posts={posts} />) || <Loading />}
+      <Suspense fallback={<Loading />}>
+        {posts && <PostFeed posts={posts} />}
+      </Suspense>
     </Layout>
   );
 };

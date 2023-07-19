@@ -23,7 +23,7 @@ export default function PostView({ post }: any) {
             </div>
           </div>
           {post.content && <Output json={post.content} />}
-          <CommentSection />
+          <CommentSection postId={post._id} comments={post.comments} />
         </div>
       )}
     </Layout>
