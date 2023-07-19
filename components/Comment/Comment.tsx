@@ -16,6 +16,22 @@ interface CommentListProps {
 }
 
 const CommentList: React.FC<CommentListProps> = ({ comments }) => {
+  const [expandedComments, setExpandedComments] = useState<string[]>([]);
+
+  const toggleExpand = (commentText: string) => {
+    if (expandedComments.includes(commentText)) {
+      setExpandedComments(
+        expandedComments.filter((text) => text !== commentText)
+      );
+    } else {
+      setExpandedComments([...expandedComments, commentText]);
+    }
+  };
+
+  const isCommentExpanded = (commentText: string) => {
+    return expandedComments.includes(commentText);
+  };
+
   return (
     <div className={styles.commentList}>
       {comments &&
@@ -24,7 +40,23 @@ const CommentList: React.FC<CommentListProps> = ({ comments }) => {
             <img src={comment.user.image} alt="Avatar" />
             <div className={styles.commentContent}>
               <h4>{comment.user.name}</h4>
-              <p>{comment.text}</p>
+              {isCommentExpanded(comment.text) ? (
+                <p>{comment.text}</p>
+              ) : (
+                <p>
+                  {comment.text.length > 100
+                    ? `${comment.text.slice(0, 100)}...`
+                    : comment.text}
+                  {comment.text.length > 100 && (
+                    <button
+                      onClick={() => toggleExpand(comment.text)}
+                      className={styles.expandButton}
+                    >
+                      Read more
+                    </button>
+                  )}
+                </p>
+              )}
               <span style={{ fontSize: ".9rem" }}>{comment.date}</span>
             </div>
           </div>
