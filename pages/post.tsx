@@ -31,7 +31,9 @@ const CreatePostPage: React.FC = () => {
 
   return (
     <Layout>
-      <div style={{ display: "flex", flexDirection: "column" }}>
+      <div
+        style={{ display: "flex", flexDirection: "column", marginTop: "15%" }}
+      >
         <div className="thumbnail">Post Editor</div>
         <div className="editorContainer">
           <input

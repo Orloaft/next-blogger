@@ -8,6 +8,7 @@ import { PostFeed } from "@/components/Feed/PostFeed";
 import Layout from "@/components/layout";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Loading from "@/components/Loading/Loading";
 
 interface Post {
   _id: string;
@@ -28,7 +29,6 @@ const Home: NextPage<HomeProps> = () => {
     axios
       .get(`/api/posts`)
       .then((res) => {
-        console.log(res);
         setPosts(res.data.posts);
       })
       .catch((err) => console.log(err));
@@ -42,20 +42,9 @@ const Home: NextPage<HomeProps> = () => {
         {" "}
         <SignIn />
       </div>
-      {session?.user && posts && <PostFeed posts={posts} />}
+      {(posts && <PostFeed posts={posts} />) || <Loading />}
     </Layout>
   );
 };
-// export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
-//   const db = await connectToDatabase();
-//   const collection = db.collection("Posts");
-//   const posts = await collection.find().toArray();
-
-//   return {
-//     props: {
-//       posts: JSON.parse(JSON.stringify(posts)),
-//     },
-//   };
-// };
 
 export default Home;
