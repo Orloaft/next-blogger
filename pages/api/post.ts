@@ -9,7 +9,7 @@ export default async function handler(
 
   // Connect to the MongoDB database
   const db = await connectToDatabase();
-  const collection = db.collection("Posts");
+  const collection = db.collection("Pending");
 
   // Create a new post document
   const newPost = {
