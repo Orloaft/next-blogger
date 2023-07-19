@@ -1,5 +1,6 @@
 import { useSession, signIn, signOut } from "next-auth/react";
 import styles from "./styles.module.scss";
+import ThemeToggle from "../ThemeToggle";
 
 export default function AccountInfo() {
   const { data: session } = useSession();
@@ -8,15 +9,16 @@ export default function AccountInfo() {
     const { name, image } = session.user;
 
     return (
-      <div className={styles.accountBar}>
+      <div className="accountBar">
         {image && (
           <img src={image} alt="Profile" className={styles.profileImage} />
         )}
 
         <span className={styles.username}>{name}</span>
-        <button className={styles.signOutButton} onClick={() => signOut()}>
+        <button className="button" onClick={() => signOut()}>
           Sign out
         </button>
+        <ThemeToggle />
       </div>
     );
   }

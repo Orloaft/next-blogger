@@ -113,9 +113,7 @@ const CommentSection: React.FC<{ comments: any; postId: any }> = ({
         postId: postId,
       })
       .then((res) => {
-        setTimeout(() => {
-          router.push(`/posts/` + postId);
-        }, 1000);
+        router.push(`/posts/` + postId);
       })
       .catch((err) => console.log(err));
   };

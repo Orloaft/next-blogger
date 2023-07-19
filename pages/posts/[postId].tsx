@@ -5,8 +5,17 @@ import { GetServerSideProps } from "next";
 import CommentSection from "@/components/Comment/Comment";
 import { getHumanReadableDate } from "@/utils/date";
 import Layout from "@/components/layout";
+import { useEditor } from "@tiptap/react";
+import { useEffect } from "react";
 
 export default function PostView({ post }: any) {
+  const theme = localStorage.getItem("theme");
+  useEffect(() => {
+    const rootElement = document.documentElement;
+    if (theme) {
+      rootElement.setAttribute("data-theme", theme);
+    }
+  }, [theme]);
   return (
     <Layout>
       {post && (

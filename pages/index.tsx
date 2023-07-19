@@ -22,9 +22,17 @@ interface HomeProps {
 }
 
 const Home: NextPage<HomeProps> = () => {
-  const { data: session } = useSession();
   const [posts, setPosts] = useState([]);
 
+  useEffect(() => {
+    const rootElement = document.documentElement;
+    if (typeof window !== "undefined") {
+      let theme = localStorage.getItem("theme");
+      if (theme) {
+        rootElement.setAttribute("data-theme", theme);
+      }
+    }
+  }, []);
   useEffect(() => {
     axios
       .get(`/api/posts`)
