@@ -4,6 +4,7 @@ import { useSession } from "next-auth/react";
 import axios from "axios";
 import { getHumanReadableDate } from "@/utils/date";
 import { useRouter } from "next/router";
+import { profanity } from "@2toad/profanity";
 
 interface Comment {
   user: any;
@@ -41,12 +42,12 @@ const CommentList: React.FC<CommentListProps> = ({ comments }) => {
             <div className={styles.commentContent}>
               <h4>{comment.user.name}</h4>
               {isCommentExpanded(comment.text) ? (
-                <p>{comment.text}</p>
+                <p>{profanity.censor(comment.text)}</p>
               ) : (
                 <p>
                   {comment.text.length > 100
                     ? `${comment.text.slice(0, 100)}...`
-                    : comment.text}
+                    : profanity.censor(comment.text)}
                   {comment.text.length > 100 && (
                     <button
                       onClick={() => toggleExpand(comment.text)}
