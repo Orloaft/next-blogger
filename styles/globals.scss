@@ -138,7 +138,7 @@ nav {
   list-style: none;
   padding: 0.25rem;
   @media (max-width: 768px) {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 }
 .frame {
@@ -331,5 +331,17 @@ footer {
     margin-left: auto;
     height: auto;
     width: 5%;
+  }
+}
+.comment {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--color-bg-secondary);
+  border-radius: 4px;
+}
+.title {
+  color: #be9090;
+  @media (max-width: 768px) {
   }
 }

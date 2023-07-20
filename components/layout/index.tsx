@@ -10,7 +10,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
         <Link className="link" href="/">
           <span>Home</span>
         </Link>
-        <div className="link">
+        <div className="link title">
           <span> Byte-Stream</span>
         </div>
         <Link className="link" href="/post">

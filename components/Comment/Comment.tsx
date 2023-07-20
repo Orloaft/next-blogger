@@ -37,7 +37,7 @@ const CommentList: React.FC<CommentListProps> = ({ comments }) => {
     <div className={styles.commentList}>
       {comments &&
         comments.map((comment, index) => (
-          <div className={styles.comment} key={index}>
+          <div className="comment" key={index}>
             <img src={comment.user.image} alt="Avatar" />
             <div className={styles.commentContent}>
               <h4>{comment.user.name}</h4>
