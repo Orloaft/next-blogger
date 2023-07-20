@@ -9,6 +9,7 @@
   --color-text-secondary: #076963;
   --color-bg-primary: #be9090;
   --color-bg-secondary: #e7eef5;
+  --color-title: #6acfc7;
 }
 
 :root[data-theme="dark"] {
@@ -16,6 +17,7 @@
   --color-text-secondary: #0c1a1a;
   --color-bg-primary: #0c1a1a;
   --color-bg-secondary: #333;
+  --color-title: #be9090;
 }
 
 * {
@@ -327,10 +329,17 @@ footer {
   padding: 8px;
   height: 10%;
   div {
-    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0;
     margin-left: auto;
     height: auto;
     width: 5%;
+
+    @media (max-width: 768px) {
+      width: 10%;
+    }
   }
 }
 .comment {
@@ -341,7 +350,7 @@ footer {
   border-radius: 4px;
 }
 .title {
-  color: #be9090;
+  color: var(--color-title);
   @media (max-width: 768px) {
   }
 }
