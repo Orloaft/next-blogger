@@ -9,7 +9,11 @@ import { useEditor } from "@tiptap/react";
 import { useEffect } from "react";
 
 export default function PostView({ post }: any) {
-  const theme = localStorage.getItem("theme");
+  let theme: string | undefined;
+  if (typeof window !== "undefined") {
+    theme = localStorage.getItem("theme") || "";
+  }
+
   useEffect(() => {
     const rootElement = document.documentElement;
     if (theme) {
