@@ -1,7 +1,7 @@
 import { useSession, signIn, signOut } from "next-auth/react";
 import styles from "./styles.module.scss";
 import ThemeToggle from "../ThemeToggle";
-
+import Image from "next/image";
 export default function AccountInfo() {
   const { data: session } = useSession();
 
@@ -11,7 +11,16 @@ export default function AccountInfo() {
     return (
       <div className="accountBar">
         {image && (
-          <img src={image} alt="Profile" className={styles.profileImage} />
+          <Image
+            src={image}
+            alt="Profile"
+            className={styles.profileImage}
+            height={100}
+            width={100}
+            loader={({ src, width, quality }) => {
+              return `${src}`;
+            }}
+          />
         )}
 
         <span className={styles.username}>{name}</span>

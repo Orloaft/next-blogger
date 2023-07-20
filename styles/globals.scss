@@ -326,4 +326,10 @@ footer {
   color: var(--color-text-primary);
   padding: 8px;
   height: 10%;
+  div {
+    margin-top: auto;
+    margin-left: auto;
+    height: 80%;
+    width: 5%;
+  }
 }

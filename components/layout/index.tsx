@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ReactNode } from "react";
 import AccountInfo from "../Auth/AccountInfo";
+import ThemeToggle from "../ThemeToggle";
 
 const Layout = ({ children }: { children: ReactNode }) => {
   return (
