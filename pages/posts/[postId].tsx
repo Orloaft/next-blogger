@@ -9,17 +9,6 @@ import { useEditor } from "@tiptap/react";
 import { useEffect } from "react";
 
 export default function PostView({ post }: any) {
-  let theme: string | undefined;
-  if (typeof window !== "undefined") {
-    theme = localStorage.getItem("theme") || "";
-  }
-
-  useEffect(() => {
-    const rootElement = document.documentElement;
-    if (theme) {
-      rootElement.setAttribute("data-theme", theme);
-    }
-  }, [theme]);
   return (
     <Layout>
       {post && (
