@@ -2,8 +2,7 @@ import { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
 import { JSONContent } from "@tiptap/react";
 import SignIn from "@/components/Auth/AccountInfo";
-import { useSession } from "next-auth/react";
-import { connectToDatabase } from "@/utils/db";
+
 import { PostFeed } from "@/components/Feed/PostFeed";
 import Layout from "@/components/layout";
 import { Suspense, useEffect, useState } from "react";

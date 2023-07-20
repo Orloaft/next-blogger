@@ -33,11 +33,12 @@ export default function AccountInfo() {
   }
 
   return (
-    <div className={styles.accountBar}>
+    <div className="accountBar">
       <span className={styles.notSignedIn}>Not signed in</span>
       <button className={styles.signInButton} onClick={() => signIn()}>
         Sign in
       </button>
+      <ThemeToggle />
     </div>
   );
 }
