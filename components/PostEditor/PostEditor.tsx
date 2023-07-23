@@ -150,7 +150,7 @@ export const CodeMark = Mark.create({
     return ["code", HTMLAttributes, 0];
   },
 });
-export default function TipTap({ onChange }: any) {
+export default function TipTap({ onChange, content }: any) {
   const editor = useEditor({
     extensions: [
       CodeMark,
@@ -167,9 +167,7 @@ export default function TipTap({ onChange }: any) {
         },
       }),
     ],
-    content: `
-      
-    `,
+    content: content,
     onUpdate: ({ editor }) => {
       onChange(editor.getJSON());
     },
