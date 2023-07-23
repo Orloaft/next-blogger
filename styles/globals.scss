@@ -286,6 +286,16 @@ button:focus {
     }
   }
 }
+
+ul {
+  margin-left: 0;
+  padding-left: 2rem;
+}
+
+ul li {
+  margin-left: 0;
+  padding-left: 0;
+}
 .post {
   font-size: 1.5rem;
   background: var(--color-bg-secondary);
