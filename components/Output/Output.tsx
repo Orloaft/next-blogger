@@ -12,9 +12,11 @@ import { CodeMark } from "../PostEditor/PostEditor";
 import OrderedList from "@tiptap/extension-ordered-list";
 import Heading from "@tiptap/extension-heading";
 import BulletList from "@tiptap/extension-bullet-list";
+import Italic from "@tiptap/extension-italic";
 export default function Output({ json }: { json: JSONContent }) {
   const output = useMemo(() => {
     return generateHTML(json, [
+      Italic,
       Document,
       Paragraph,
       Text,
