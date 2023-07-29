@@ -13,6 +13,7 @@ import OrderedList from "@tiptap/extension-ordered-list";
 import Heading from "@tiptap/extension-heading";
 import BulletList from "@tiptap/extension-bullet-list";
 import Italic from "@tiptap/extension-italic";
+import TextStyle from "@tiptap/extension-text-style";
 export default function Output({ json }: { json: JSONContent }) {
   const output = useMemo(() => {
     return generateHTML(json, [
@@ -26,6 +27,7 @@ export default function Output({ json }: { json: JSONContent }) {
       OrderedList,
       BulletList,
       Heading,
+      TextStyle,
     ]);
   }, [json]);
 
