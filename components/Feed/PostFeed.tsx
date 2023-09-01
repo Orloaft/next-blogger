@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import { PostThumbnail } from "../Thumbnail/PostThumbnail";
 
 export const PostFeed = ({ posts }: any) => {

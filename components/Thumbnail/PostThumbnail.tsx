@@ -1,5 +1,6 @@
 import { getHumanReadableDate } from "@/utils/date";
 import { JSONContent } from "@tiptap/react";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
 export interface Post {
@@ -18,6 +19,7 @@ export const PostThumbnail: React.FC<Post> = ({
   _id,
 }: Post) => {
   const router = useRouter();
+  const { data: session } = useSession();
 
   return (
     <div
@@ -35,6 +37,15 @@ export const PostThumbnail: React.FC<Post> = ({
           <p>{getHumanReadableDate(new Date(date))}</p>
           <p>{author}</p>
         </div>
+        {session && session.user?.name === author && (
+          <div
+            onClick={() => {
+              router.push(`/postEditor?id=` + _id);
+            }}
+          >
+            edit
+          </div>
+        )}
       </div>
     </div>
   );

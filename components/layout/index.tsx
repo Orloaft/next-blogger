@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ReactNode } from "react";
 import AccountInfo from "../Auth/AccountInfo";
-import ThemeToggle from "../ThemeToggle";
 
 const Layout = ({ children }: { children: ReactNode }) => {
   return (
@@ -13,7 +12,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
         <div className="link title">
           <span> Byte-Stream</span>
         </div>
-        <Link className="link" href="/post">
+        <Link className="link" href="/postEditor">
           <span> Post</span>
         </Link>
       </nav>

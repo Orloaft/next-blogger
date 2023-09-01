@@ -5,7 +5,6 @@ export function getHumanReadableDate(date: any) {
     day: "numeric",
     hour: "numeric",
     minute: "numeric",
-    second: "numeric",
     timeZone: "UTC",
   };
 

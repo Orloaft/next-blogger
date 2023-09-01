@@ -4,13 +4,19 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import Layout from "@/components/layout";
+import { GetServerSideProps } from "next";
+import { connectToDatabase } from "@/utils/db";
+import { ObjectId } from "mongodb";
+import { getHumanReadableDate } from "@/utils/date";
 
-const CreatePostPage: React.FC = () => {
-  const [form, setForm] = useState({
-    content: {} as JSONContent,
-    title: "",
-    url: "",
-  });
+const CreatePostPage: React.FC = ({ post }: any) => {
+  const [form, setForm] = useState(
+    (post && post) || {
+      content: {} as JSONContent,
+      title: "",
+      url: "",
+    }
+  );
   const session = useSession();
 
   const handleChange = (
@@ -18,9 +24,12 @@ const CreatePostPage: React.FC = () => {
   ) => {
     if ((e as React.ChangeEvent<HTMLInputElement>).target) {
       const target = e as React.ChangeEvent<HTMLInputElement>;
-      setForm((prevForm) => ({ ...prevForm, [e.target.name]: e.target.value }));
+      setForm((prevForm: any) => ({
+        ...prevForm,
+        [e.target.name]: e.target.value,
+      }));
     } else {
-      setForm((prevForm) => ({ ...prevForm, content: e as JSONContent }));
+      setForm((prevForm: any) => ({ ...prevForm, content: e as JSONContent }));
     }
   };
 
@@ -71,3 +80,22 @@ const CreatePostPage: React.FC = () => {
 };
 
 export default CreatePostPage;
+
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  const { id } = query;
+  const db = await connectToDatabase();
+  const collection = db.collection("Posts");
+  const post = await collection.findOne({
+    _id: new ObjectId(id as string),
+  });
+
+  return {
+    props: {
+      post: {
+        ...post,
+        _id: post && post._id.toString(),
+        date: post && getHumanReadableDate(post.date),
+      },
+    },
+  };
+};

@@ -74,6 +74,7 @@ body {
     margin-right: 1%;
     height: 15%;
     width: 15%;
+    object-fit: contain;
   }
   cursor: pointer;
   &:hover {
@@ -86,6 +87,7 @@ body {
 }
 
 .intro {
+  max-height: 10%;
   display: flex;
   gap: 5%;
   transition: all 0.3s ease-in-out;
@@ -177,7 +179,7 @@ a {
   > * + * {
     margin-top: 0.75em;
   }
-  height: 50vh;
+  height: 100%;
   margin: 0.5rem;
   ul,
   ol {

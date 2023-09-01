@@ -5,8 +5,6 @@ import { GetServerSideProps } from "next";
 import CommentSection from "@/components/Comment/Comment";
 import { getHumanReadableDate } from "@/utils/date";
 import Layout from "@/components/layout";
-import { useEditor } from "@tiptap/react";
-import { useEffect } from "react";
 
 export default function PostView({ post }: any) {
   return (
@@ -24,7 +22,9 @@ export default function PostView({ post }: any) {
               </div>
             </div>
           </div>
-          {post.content && <Output json={post.content} />}
+          <div style={{ height: "100%" }}>
+            {post.content && <Output json={post.content} />}
+          </div>
           <CommentSection postId={post._id} comments={post.comments} />
         </div>
       )}
